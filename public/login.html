@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Interna | Girassol Bronzeamento Beleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner-page">
+  <main class="auth-page">
+    <a class="back-link" href="index.html">Voltar para o site</a>
+
+    <section class="auth-card">
+      <p class="eyebrow">Área interna</p>
+      <h1>Acesse o painel da Girassol Bronzeamento Beleza</h1>
+      <p class="auth-text">
+        Use a área interna para visualizar a agenda ou entrar como cliente e registrar uma avaliação.
+      </p>
+
+      <form id="loginForm" class="form-grid">
+        <label>
+          E-mail
+          <input id="email" name="email" type="email" placeholder="admin@bronze.com" required>
+        </label>
+
+        <label>
+          Senha
+          <input id="senha" name="senha" type="password" placeholder="123456" required>
+        </label>
+
+        <button class="button button-primary button-full" type="submit">Entrar</button>
+        <p id="loginMensagem" class="form-message" aria-live="polite"></p>
+      </form>
+
+      <div class="auth-tip">
+        <strong>Acesso protegido</strong>
+        <p>Entre com o e-mail e senha cadastrados no perfil do administrador.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: girassol-bronzeamento-beleza
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.17.1
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_SENHA
+        sync: false

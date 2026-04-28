@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área da Cliente | Girassol Bronzeamento Beleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner-page">
+  <main class="client-page">
+    <div class="container dashboard-header">
+      <div>
+        <p class="eyebrow">Área da cliente</p>
+        <h1>Conte como foi sua experiência</h1>
+      </div>
+      <a class="button button-secondary" href="index.html">Voltar ao site</a>
+    </div>
+
+    <section class="container dashboard-card">
+      <div class="section-heading align-left compact">
+        <h2>Deixe sua avaliação</h2>
+        <p>Seu comentário pode aparecer na home para reforçar a credibilidade da marca.</p>
+      </div>
+
+      <form id="avaliacaoForm" class="form-grid">
+        <label>
+          Seu nome
+          <input id="cliente" name="cliente" placeholder="Ex.: Juliana Souza" required>
+        </label>
+
+        <label>
+          Comentário
+          <textarea id="comentario" name="comentario" rows="5" placeholder="Fale sobre o atendimento, conforto e resultado." required></textarea>
+        </label>
+
+        <label>
+          Nota
+          <select id="nota" name="nota" required>
+            <option value="5 estrelas">5 estrelas</option>
+            <option value="4 estrelas">4 estrelas</option>
+            <option value="3 estrelas">3 estrelas</option>
+            <option value="2 estrelas">2 estrelas</option>
+            <option value="1 estrela">1 estrela</option>
+          </select>
+        </label>
+
+        <button class="button button-primary button-full" type="submit">Enviar avaliação</button>
+        <p id="avaliacaoMensagem" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

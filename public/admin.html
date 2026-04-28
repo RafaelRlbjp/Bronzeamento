@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo | Girassol Bronzeamento Beleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner-page">
+  <main class="dashboard-page">
+    <div class="container dashboard-header">
+      <div>
+        <p class="eyebrow">Painel administrativo</p>
+        <h1>Agenda da Girassol Bronzeamento Beleza</h1>
+      </div>
+      <div class="dashboard-header-actions">
+        <a class="button button-secondary" href="index.html">Voltar ao site</a>
+        <button id="logoutButton" class="button button-danger" type="button">Sair</button>
+      </div>
+    </div>
+
+    <section class="container dashboard-card">
+      <div class="section-heading align-left compact">
+        <h2>Agendamentos</h2>
+        <p>Acompanhe os horários, avaliações e o status geral do studio.</p>
+      </div>
+
+      <div class="dashboard-actions">
+        <label class="filter-control filter-control-wide">
+          Buscar cliente
+          <input id="filtroNome" type="text" placeholder="Digite o nome da cliente">
+        </label>
+        <label class="filter-control">
+          Filtrar por data
+          <input id="filtroData" type="date">
+        </label>
+        <label class="filter-control">
+          Status do pagamento
+          <select id="filtroStatusPagamento">
+            <option value="">Todos</option>
+            <option value="pendente">Pendente</option>
+            <option value="pago">Pago</option>
+          </select>
+        </label>
+        <label class="filter-control">
+          Serviço
+          <select id="filtroServico">
+            <option value="">Todos</option>
+            <option value="Bronze Natural">Bronze Natural</option>
+            <option value="Bronze Gelado">Bronze Gelado</option>
+            <option value="Pacote com 3 Sessoes">Pacote com 3 Sessões</option>
+          </select>
+        </label>
+        <button id="atualizarPainel" class="button button-secondary" type="button">Atualizar painel</button>
+        <button id="limparFiltro" class="button button-secondary" type="button">Limpar filtro</button>
+        <p id="painelMensagem" class="form-message" aria-live="polite"></p>
+      </div>
+
+      <div id="dashboardResumo" class="dashboard-metrics"></div>
+      <div id="proximosHorarios" class="dashboard-highlight"></div>
+      <div id="resumoFiltrosAgenda" class="agenda-filter-summary"></div>
+
+      <section id="editorAgendamento" class="appointment-editor is-hidden" aria-live="polite">
+        <div class="section-heading align-left compact">
+          <h3>Editar agendamento</h3>
+          <p>Atualize os dados da cliente e ajuste data, horário, serviço, pagamento e status.</p>
+        </div>
+
+        <form id="editarAgendamentoForm" class="form-grid appointment-editor-form">
+          <input id="editarAgendamentoId" type="hidden">
+
+          <label>
+            Nome da cliente
+            <input id="editarNome" name="editarNome" placeholder="Nome da cliente" required>
+          </label>
+
+          <label>
+            Serviço
+            <select id="editarServico" name="editarServico" required>
+              <option value="Bronze Natural">Bronze Natural</option>
+              <option value="Bronze Gelado">Bronze Gelado</option>
+              <option value="Pacote com 3 Sessoes">Pacote com 3 Sessões</option>
+            </select>
+          </label>
+
+          <label>
+            Data
+            <input id="editarData" name="editarData" type="date" required>
+          </label>
+
+          <label>
+            Horário
+            <input id="editarHora" name="editarHora" type="time" required>
+          </label>
+
+          <label>
+            Forma de pagamento
+            <select id="editarPagamento" name="editarPagamento" required>
+              <option value="Pix">Pix</option>
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartao">Cartão</option>
+            </select>
+          </label>
+
+          <label>
+            Status do pagamento
+            <select id="editarStatusPagamento" name="editarStatusPagamento" required>
+              <option value="pendente">Pendente</option>
+              <option value="pago">Pago</option>
+            </select>
+          </label>
+
+          <div class="appointment-editor-actions">
+            <button class="button button-primary" type="submit">Salvar alterações</button>
+            <button id="cancelarEdicaoAgendamento" class="button button-secondary" type="button">Cancelar edição</button>
+          </div>
+
+          <p id="editarAgendamentoMensagem" class="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <div id="agenda" class="agenda-list"></div>
+    </section>
+
+    <section class="container dashboard-card">
+      <div class="section-heading align-left compact">
+        <h2>Financeiro</h2>
+        <p>Veja os valores recebidos e pendentes, com filtro por mês.</p>
+      </div>
+
+      <div class="dashboard-actions">
+        <label class="filter-control">
+          Filtrar por mês
+          <input id="filtroMesFinanceiro" type="month">
+        </label>
+        <button id="limparFiltroFinanceiro" class="button button-secondary" type="button">Limpar filtro</button>
+        <p id="financeiroMensagem" class="form-message" aria-live="polite"></p>
+      </div>
+
+      <div id="financeiroResumo" class="finance-grid"></div>
+      <div id="financeiroServicos" class="finance-details"></div>
+    </section>
+
+    <section class="container dashboard-card">
+      <div class="section-heading align-left compact">
+        <h2>Avaliações recentes</h2>
+        <p>Veja rapidamente os comentários enviados pelas clientes.</p>
+      </div>
+
+      <div id="avaliacoesAdmin" class="admin-reviews"></div>
+    </section>
+
+    <section class="container dashboard-card">
+      <div class="section-heading align-left compact">
+        <h2>Perfil do administrador</h2>
+        <p>Atualize os dados de acesso do painel interno e troque a senha quando precisar.</p>
+      </div>
+
+      <form id="perfilAdminForm" class="form-grid profile-form">
+        <label>
+          Nome
+          <input id="adminNome" name="adminNome" placeholder="Nome do administrador" required>
+        </label>
+
+        <label>
+          E-mail de login
+          <input id="adminEmail" name="adminEmail" type="email" placeholder="admin@bronze.com" required>
+        </label>
+
+        <label>
+          Senha atual
+          <input id="adminSenhaAtual" name="adminSenhaAtual" type="password" placeholder="Digite a senha atual" required>
+        </label>
+
+        <label>
+          Nova senha
+          <input id="adminNovaSenha" name="adminNovaSenha" type="password" placeholder="Deixe em branco para manter a atual">
+        </label>
+
+        <button class="button button-primary button-full" type="submit">Salvar perfil</button>
+        <p id="perfilMensagem" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
